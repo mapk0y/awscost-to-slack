@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  upload:
+    build: .
+    image: lambda-upload
+    volumes:
+      - "${PWD}/aws:/root/.aws"
+      - "${PWD}:/workdir/"
+    working_dir: "/workdir"
+    tty: true
+    stdin_open: true
+    command: /usr/local/bin/lambda-uploader
